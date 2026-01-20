@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description"
         content="TC-IDM: Pixels to World: Grounding Video Generation for Executable Zero-shot Robot Motion.">
-  <meta name="keywords" content="Robotics, Video Generation, Zero-shot, Dexterous Hand, TC-IDM">
+  <meta name="keywords" content="Robotics, Video Generation, Zero-shot, Dexterous Hand, TC-IDM, World Model">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TC-IDM: Pixels to World</title>
 
@@ -18,13 +18,109 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Noto Sans', sans-serif;
+    }
+    
+    .publication-title {
+        font-family: 'Castoro', serif; /* 标题使用衬线字体 */
+        font-weight: bold;
+    }
+
+    /* 左侧导航栏 Sticky 效果 */
+    .menu-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 40px; /* 距离顶部的距离 */
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    .menu-label {
+        font-size: 0.9em;
+        letter-spacing: 0.1em;
+        color: #363636;
+        font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    .menu-list a {
+        border-radius: 2px;
+        color: #666;
+        padding: 0.5em 0.75em;
+    }
+
+    .menu-list a:hover {
+        background-color: #f5f5f5;
+        color: #363636;
+    }
+
+    .menu-list a.is-active {
+        background-color: #363636;
+        color: #fff;
+    }
+
+    /* 章节样式 */
+    .content-section {
+        margin-bottom: 3rem;
+        padding-top: 1rem; /* 为锚点定位留出空间 */
+    }
+    
+    .section-title {
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Google Sans', sans-serif;
+        font-weight: 500;
+    }
+
+    /* 视频 Grid 布局 */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .video-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .video-caption {
+        padding: 10px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    /* Abstract 黑色背景块  */
+    /* .abstract-box {
+        background-color: #f5f5f5; 
+        border-left: 5px solid #363636;
+        padding: 1.5rem;
+        border-radius: 4px;
+    } */
+
+    .content-section {
+        margin-bottom: 3rem;
+        /* 这里设置锚点定位时的顶部偏移量，类似于之前的 -50px */
+        scroll-margin-top: 60px; 
+    }
+  </style>
 </head>
 <body>
 
@@ -47,7 +143,6 @@
   </div>
 </nav>
 
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -55,9 +150,11 @@
         <div class="column has-text-centered">
           
           <h1 class="title is-1 publication-title">
-            <span style="color: #ff3860; font-weight: bold;">TC-IDM</span><br>
-            <span class="is-size-2">Pixels to World: Grounding Video Generation for Executable Zero-shot Robot Motion</span>
+            TC-IDM
           </h1>
+          <h2 class="subtitle is-3 publication-title" style="color: #555;">
+            Pixels to World: Grounding Video Generation for <br>Executable Zero-shot Robot Motion
+          </h2>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -77,34 +174,32 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2400.xxxxx"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2400.xxxxx" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/wsbaiyi/Pixels-to-World"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
               </span>
               <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
+                <a href="https://github.com/wsbaiyi/Pixels-to-World" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
                 </a>
               </span>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
@@ -114,105 +209,284 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div style="background-color: #f5f5f5; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
-          <h2 class="title is-4" style="color: #888;">Teaser Video Coming Soon</h2>
+      <div style="width: 100%; text-align: center;">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            </video>
+          <img src="./static/images/teaser_final_final.png" alt="Teaser" style="width: 100%; border-radius: 10px; background: #eee; min-height: 300px; object-fit: cover;">
       </div>
-      <h2 class="subtitle has-text-centered">
-        <br>
-        <strong>TC-IDM</strong> bridges the gap between video generation and robotic execution, enabling zero-shot transfer to dexterous hands.
+      
+      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
+        <strong>Tool-centric world-model-based IDM</strong> achieves stronger generalization than VLA baselines, providing a clean and rigid structure that is easier to learn and transfer across embodiments.
       </h2>
     </div>
   </div>
 </section>
 
-
 <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            (Paste your full abstract here...)
-            We present the first method capable of photorealistically reconstructing a non-rigidly deforming scene...
-          </p>
-          <p>
-            Our approach augments neural radiance fields...
-          </p>
-        </div>
+  <div class="container is-max-widescreen"> <div class="columns">
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu menu-sticky">
+          <p class="menu-label">Content</p>
+          <ul class="menu-list">
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#error">Error Range Analysis</a></li>
+            <li><a href="#camera">Generalization Across Camera Variations</a></li>
+            <li><a href="#deformable">Generalization for Deformable Objects</a></li>
+            <li><a href="#long-horizon">Long Horizon Tasks</a></li>
+            <li><a href="#cross-embodiment">Cross-Embodiment</a></li>
+            <li><a href="#migration">Human-to-Dexterous Hand Migration</a></li>
+          </ul>
+        </aside>
       </div>
-    </div>
-  </div>
-</section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
-          <p>
-            Our architecture consists of two main branches...
-          </p>
-          
-          <div style="background-color: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-bottom: 20px;">
-              <span style="color: #888;">Method Architecture Diagram (image_5f44ab.png)</span>
-          </div>
-          
-          <p>
-             The <strong>Hand Retargeting Branch</strong> (top) extracts semantic hand states, while the <strong>SE(3) Estimation Branch</strong> (bottom) recovers end-effector trajectories.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Results</h2>
-        <div class="content has-text-justified">
-          <p>
-            We evaluate our method on dynamic and deformable object manipulation tasks.
-          </p>
-        </div>
-
-        <h3 class="title is-4">1. Dynamic Interaction: Balloon Hitting</h3>
-        <div class="content has-text-centered">
-          <div style="background-color: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-bottom: 20px;">
-              <span style="color: #888;">Balloon Hitting Demo Video</span>
+      <div class="column is-10">
+        
+        <div id="abstract" class="content-section">
+          <h2 class="title is-3 section-title">Abstract</h2>
+          <div class="content has-text-justified ">
+            <p>
+              The vision–language–action (VLA) paradigm has enabled powerful robotic control by leveraging vision–language models, but its reliance on large-scale, high-quality robot data limits its generalization. Generative world models offer a promising alternative for general-purpose embodied AI, yet a critical gap remains between their pixel-level plans and physically executable actions. To this end, we propose the Tool-Centric Inverse Dynamics Model (TC-IDM). By focusing on the tool’s imagined trajectory as synthesized by the world model, TC-IDM establishes a robust intermediate representation that bridges the gap between visual planning and physical control. TC-IDM extracts the tool’s point cloud trajectories via segmentation and 3D motion estimation from generated videos. Considering diverse tool attributes, our architecture employs decoupled action heads to project these planned trajectories into 6-DoF end-effector motions and corresponding control signals. This ’plan-and-translate’ paradigm not only supports a wide range of end-effectors but also significantly improves viewpoint invariance. Furthermore, it exhibits strong generalization capabilities across long-horizon and out-of-distribution tasks, including interacting with deformable objects. In real-world evaluations, the world model with TC-IDM achieves an average success rate of 61.11%, with 77.7% on simple tasks, and 38.46% on zero-shot deformable object tasks—substantially outperforming end-to-end VLA-style baselines and other IDMs.
+            </p>
           </div>
         </div>
 
-        <h3 class="title is-4">2. Deformable Object: Cloth Removal</h3>
-        <div class="content has-text-centered">
-          <div style="background-color: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
-              <span style="color: #888;">Cloth Removal Demo Video</span>
+        <div id="method" class="content-section">
+          <h2 class="title is-3 section-title">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our pipeline bridges video generation and robot control through a tool-centric approach. Starting with an initial frame and instruction, the World Model generates a high-level visual plan. To make this executable, we employ a Tool-Centric Inverse Dynamic Model (IDM) that extracts depth-aligned geometry and tracks 3D gripper flow. These visual dynamics are finally decoded into continuous gripper and gesture states via dedicated action heads.
+            </p>
+            <figure class="image">
+              <img src="./static/images/method.png" alt="Method Overview" style="background: #f5f5f5; min-height: 200px; border-radius: 5px;"> 
+              <figcaption class="has-text-centered mt-2">Overview of the TC-IDM Architecture.</figcaption>
+            </figure>
           </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-</section>
+        <div id="error" class="content-section">
+          <h2 class="title is-3 section-title">Error Range Analysis</h2>
+          <div class="content has-text-justified">
+            <p>
+              TC-IDM achieves markedly higher plan-to-execution fidelity than other IDM baselines. 
+            </p>
+
+            <div class="columns is-centered is-variable is-2">
+              
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/pred_dart.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Generated Manipulation</div>
+                </div>
+              </div>
+
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/ours_dart.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption"><strong>TC-IDM (Ours)</strong></div>
+                </div>
+              </div>
+
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/anypose_dart.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Anypos</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div id="camera" class="content-section">
+          <h2 class="title is-3 section-title">Generalization Across Camera Variations</h2>
+          <div class="content">
+            <p>The same task performed using observations from Apple Pro and Realsense D435i.</p>
+            
+            <div class="columns is-centered is-variable is-2">
+              
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/apple_pro.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Apple Pro Camera</div>
+                </div>
+              </div>
+
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/D435i.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Realsense D435i Camera</div>
+                </div>
+              </div>
+
+              <div class="column is-4">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/gt_bread.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Real Robot Execution</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
 
-<section class="section" id="BibTeX">
+
+      
+        <div id="deformable" class="content-section">
+          <h2 class="title is-3 section-title">Generalization for Deformable Objects</h2>
+          <div class="content">
+            <p>Comparison between generated manipulation (left) and real robot execution (right). The model can recognize the cloth as a manipulable object, plan valid grasp points, and generate appropriate removal trajectories.</p>
+            
+            <div class="columns is-centered">
+              
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/pred_deformable.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Generated Manipulation</div>
+                </div>
+              </div>
+
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/gt_deformable.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Real Robot Execution</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div id="long-horizon" class="content-section">
+          <h2 class="title is-3 section-title">Long Horizon Tasks</h2>
+          <div class="content">
+            <p>The world model generates a full six-step visual plan from the initial scene and the instruction “Fold the hoodie,” and the TC-IDM executes the plan in the real world, completing all stages of the folding sequence.</p>
+            
+            <div class="columns is-centered">
+              
+              <div class="column is-5"> <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/long_horizon.mp4" type="video/mp4">
+                  </video>
+                  <!-- <div class="video-caption">Xylophone Playing</div> -->
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div id="cross-embodiment" class="content-section">
+          <h2 class="title is-3 section-title">Cross-Embodiment</h2>
+          <div class="content">
+            <p>Comparison between the generated manipulation (left) and real robot execution (right). The model effectively transfers manipulation knowledge to a dual-arm UR robot, enabling precise motion planning and execution for xylophone playing.</p>
+            
+            <div class="columns is-centered">
+              
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/pred.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Generated Manipulation</div>
+                </div>
+              </div>
+
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/gt.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Real Robot Execution</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+                
+        
+        
+        <div id="migration" class="content-section">
+          <h2 class="title is-3 section-title">Human-to-Dexterous Hand Migration</h2>
+          <div class="content">
+            <p>
+              Visualization of the Balloon Hitting (dynamic interaction) and Cloth Removal. We compare the predicted video with the real-world execution. Despite the significant embodiment gap, our model successfully transfers motion priors to the multi-fingered hand without fine-tuning.
+            </p>
+            
+            <div class="columns is-centered">
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/cloth.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Generated Human Video (Cloth Removal)</div>
+                </div>
+              </div>
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/ball.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Generated Human Video (Balloon Hitting)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="columns is-centered">
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/hand_cloth.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Dexterous Hand Execution (Cloth Removal)</div>
+                </div>
+              </div>
+              <div class="column is-5">
+                <div class="video-card">
+                  <video autoplay muted loop playsinline width="100%">
+                    <source src="./static/videos/hand_ballon.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-caption">Dexterous Hand Execution (Balloon Hitting)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> </div> </div> </section>
+
+<section class="section" id="BibTeX" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{pixels2world2026,
   title={Pixels to World: Grounding Video Generation for Executable Zero-shot Robot Motion},
-  author={Author, A and Author, B},
+  author={Your Name and Co-Author},
   journal={arXiv preprint arXiv:2400.xxxxx},
   year={2026}
 }</code></pre>
   </div>
 </section>
-
 
 <footer class="footer">
   <div class="container">
@@ -231,8 +505,6 @@
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
             Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p>
         </div>
@@ -240,6 +512,62 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // // 1. 处理左侧导航栏点击后的样式切换（保持不变）
+  // document.querySelectorAll('.menu-list a').forEach(anchor => {
+  //     anchor.addEventListener('click', function (e) {
+  //         // 移除所有 active 类
+  //         document.querySelectorAll('.menu-list a').forEach(a => a.classList.remove('is-active'));
+  //         // 给当前点击项添加 active 类
+  //         this.classList.add('is-active');
+  //     });
+  // });
+
+  // // 2. 监听滚动事件，自动更新高亮
+  // // 使用了防抖动（可选）或直接监听，这里为了流畅直接监听
+  // window.addEventListener('scroll', function() {
+  //     let currentSection = '';
+  //     const sections = document.querySelectorAll('.content-section');
+      
+  //     // 核心修改：调整触发判定的位置
+  //     // window.scrollY 是页面滚动的距离
+  //     // + 70 是为了配合 CSS 中的 scroll-margin-top: 60px
+  //     // 只有当章节的标题真正滚动到距离视口顶部 70px 以内时，才切换高亮
+  //     const scrollPosition = window.scrollY + 70;
+
+  //     sections.forEach(section => {
+  //         const sectionTop = section.offsetTop;
+          
+  //         // 如果当前的滚动位置超过了章节的顶部，就将 currentSection 更新为该章节
+  //         // 由于 forEach 是按顺序执行的，最后一个满足条件的章节会覆盖前面的，
+  //         // 从而确保高亮的是当前视口中最靠上的那个章节。
+  //         if (scrollPosition >= sectionTop) {
+  //             currentSection = section.getAttribute('id');
+  //         }
+  //     });
+
+  //     // 如果页面滚到底部了，强制高亮最后一个（防止最后一个章节太短无法触发）
+  //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+  //         // 获取最后一个章节的ID
+  //         if(sections.length > 0){
+  //            currentSection = sections[sections.length - 1].getAttribute('id');
+  //         }
+  //     }
+
+  //     // 更新菜单的高亮状态
+  //     if (currentSection) {
+  //         document.querySelectorAll('.menu-list a').forEach(a => {
+  //             a.classList.remove('is-active');
+  //             // 匹配 href="#id" 和 currentSection
+  //             if (a.getAttribute('href').substring(1) === currentSection) {
+  //                 a.classList.add('is-active');
+  //             }
+  //         });
+  //     }
+  // });
+</script>
+        
 
 </body>
 </html>
