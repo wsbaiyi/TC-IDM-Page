@@ -255,9 +255,6 @@
         <div id="method" class="content-section">
           <h2 class="title is-3 section-title">Method</h2>
           <div class="content has-text-justified">
-            <p>
-              Our pipeline bridges video generation and robot control through a tool-centric approach. Starting with an initial frame and instruction, the World Model generates a high-level visual plan. To make this executable, we employ a Tool-Centric Inverse Dynamic Model (IDM) that extracts depth-aligned geometry and tracks 3D gripper flow. These visual dynamics are finally decoded into continuous gripper and gesture states via dedicated action heads.
-            </p>
             <figure class="image">
               <img src="./static/images/method.png" alt="Method Overview" style="background: #f5f5f5; min-height: 200px; border-radius: 5px;"> 
               <figcaption class="has-text-centered mt-2">Overview of the TC-IDM Architecture.</figcaption>
@@ -269,7 +266,7 @@
           <h2 class="title is-3 section-title">Error Range Analysis</h2>
           <div class="content has-text-justified">
             <p>
-              TC-IDM achieves markedly higher plan-to-execution fidelity than other IDM baselines. 
+              Achieves sub-4cm precision in dart placement tasks, demonstrating superior plan-to-execution fidelity over VLA baselines.
             </p>
 
             <div class="columns is-centered is-variable is-2">
@@ -308,7 +305,9 @@
         <div id="camera" class="content-section">
           <h2 class="title is-3 section-title">Generalization Across Camera Variations</h2>
           <div class="content">
-            <p>The same task performed using observations from Apple Pro and Realsense D435i.</p>
+            <p>
+              Zero-shot transfer to unseen cameras (Apple Pro, D435i) and varying lighting conditions without any fine-tuning.
+            </p>
             
             <div class="columns is-centered is-variable is-2">
               
@@ -349,7 +348,9 @@
         <div id="deformable" class="content-section">
           <h2 class="title is-3 section-title">Generalization for Deformable Objects</h2>
           <div class="content">
-            <p>Comparison between generated manipulation (left) and real robot execution (right). The model can recognize the cloth as a manipulable object, plan valid grasp points, and generate appropriate removal trajectories.</p>
+            <p>
+              Successfully handles non-rigid objects (e.g., cloth removal) with a 38.46% success rate, despite being trained exclusively on rigid data.
+            </p>
             
             <div class="columns is-centered">
               
@@ -379,7 +380,9 @@
         <div id="long-horizon" class="content-section">
           <h2 class="title is-3 section-title">Long Horizon Tasks</h2>
           <div class="content">
-            <p>The world model generates a full six-step visual plan from the initial scene and the instruction “Fold the hoodie,” and the TC-IDM executes the plan in the real world, completing all stages of the folding sequence.</p>
+            <p>
+              Executes complex multi-stage tasks, such as 6-step hoodie folding, in a zero-shot manner without intermediate replanning.
+            </p>
             
             <div class="columns is-centered">
               
@@ -398,7 +401,9 @@
         <div id="cross-embodiment" class="content-section">
           <h2 class="title is-3 section-title">Cross-Embodiment</h2>
           <div class="content">
-            <p>Comparison between the generated manipulation (left) and real robot execution (right). The model effectively transfers manipulation knowledge to a dual-arm UR robot, enabling precise motion planning and execution for xylophone playing.</p>
+            <p>
+              Seamlessly transfers motion priors from single-arm Franka to dual-arm UR5 systems for dynamic tasks like xylophone playing.
+            </p>
             
             <div class="columns is-centered">
               
@@ -430,7 +435,7 @@
           <h2 class="title is-3 section-title">Human-to-Dexterous Hand Migration</h2>
           <div class="content">
             <p>
-              Visualization of the Balloon Hitting (dynamic interaction) and Cloth Removal. We compare the predicted video with the real-world execution. Despite the significant embodiment gap, our model successfully transfers motion priors to the multi-fingered hand without fine-tuning.
+              Enables zero-shot retargeting to various multi-fingered hands (BrainCo, Inspire) via embodiment-agnostic motion representations.
             </p>
             
             <div class="columns is-centered">
