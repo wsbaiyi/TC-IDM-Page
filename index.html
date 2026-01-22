@@ -452,9 +452,9 @@
               <div class="column is-5">
                 <div class="video-card">
                   <video autoplay muted loop playsinline width="100%">
-                    <source src="./static/videos/ball.mp4" type="video/mp4">
+                    <source src="./static/videos/hand_cloth.mp4" type="video/mp4">
                   </video>
-                  <div class="video-caption">Generated Human Video (Balloon Hitting)</div>
+                  <div class="video-caption">Dexterous Hand Execution (Cloth Removal)</div>
                 </div>
               </div>
             </div>
@@ -463,9 +463,9 @@
               <div class="column is-5">
                 <div class="video-card">
                   <video autoplay muted loop playsinline width="100%">
-                    <source src="./static/videos/hand_cloth.mp4" type="video/mp4">
+                    <source src="./static/videos/ball.mp4" type="video/mp4">
                   </video>
-                  <div class="video-caption">Dexterous Hand Execution (Cloth Removal)</div>
+                  <div class="video-caption">Generated Human Video (Balloon Hitting)</div>
                 </div>
               </div>
               <div class="column is-5">
@@ -520,60 +520,6 @@
   </div>
 </footer>
 
-<script>
-  // // 1. 处理左侧导航栏点击后的样式切换（保持不变）
-  // document.querySelectorAll('.menu-list a').forEach(anchor => {
-  //     anchor.addEventListener('click', function (e) {
-  //         // 移除所有 active 类
-  //         document.querySelectorAll('.menu-list a').forEach(a => a.classList.remove('is-active'));
-  //         // 给当前点击项添加 active 类
-  //         this.classList.add('is-active');
-  //     });
-  // });
-
-  // // 2. 监听滚动事件，自动更新高亮
-  // // 使用了防抖动（可选）或直接监听，这里为了流畅直接监听
-  // window.addEventListener('scroll', function() {
-  //     let currentSection = '';
-  //     const sections = document.querySelectorAll('.content-section');
-      
-  //     // 核心修改：调整触发判定的位置
-  //     // window.scrollY 是页面滚动的距离
-  //     // + 70 是为了配合 CSS 中的 scroll-margin-top: 60px
-  //     // 只有当章节的标题真正滚动到距离视口顶部 70px 以内时，才切换高亮
-  //     const scrollPosition = window.scrollY + 70;
-
-  //     sections.forEach(section => {
-  //         const sectionTop = section.offsetTop;
-          
-  //         // 如果当前的滚动位置超过了章节的顶部，就将 currentSection 更新为该章节
-  //         // 由于 forEach 是按顺序执行的，最后一个满足条件的章节会覆盖前面的，
-  //         // 从而确保高亮的是当前视口中最靠上的那个章节。
-  //         if (scrollPosition >= sectionTop) {
-  //             currentSection = section.getAttribute('id');
-  //         }
-  //     });
-
-  //     // 如果页面滚到底部了，强制高亮最后一个（防止最后一个章节太短无法触发）
-  //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-  //         // 获取最后一个章节的ID
-  //         if(sections.length > 0){
-  //            currentSection = sections[sections.length - 1].getAttribute('id');
-  //         }
-  //     }
-
-  //     // 更新菜单的高亮状态
-  //     if (currentSection) {
-  //         document.querySelectorAll('.menu-list a').forEach(a => {
-  //             a.classList.remove('is-active');
-  //             // 匹配 href="#id" 和 currentSection
-  //             if (a.getAttribute('href').substring(1) === currentSection) {
-  //                 a.classList.add('is-active');
-  //             }
-  //         });
-  //     }
-  // });
-</script>
         
 
 </body>
